@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\sorted_lists.dir/objects.a
+C:\PROGRA~1\CodeBlocks\MinGW\bin\ar.exe cr CMakeFiles\sorted_lists.dir/objects.a @CMakeFiles\sorted_lists.dir\objects1.rsp
+C:\PROGRA~1\CodeBlocks\MinGW\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\sorted_lists.dir/objects.a -Wl,--no-whole-archive -o sorted_lists.exe -Wl,--out-implib,libsorted_lists.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\sorted_lists.dir\linklibs.rsp
