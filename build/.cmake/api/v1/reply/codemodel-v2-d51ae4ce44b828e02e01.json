@@ -26,7 +26,7 @@
 					[
 						0
 					],
-					"name" : "HW2",
+					"name" : "<PROJNAME>",
 					"targetIndexes" : 
 					[
 						0
@@ -37,9 +37,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "exe_file::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-exe_file-Debug-de7978a52426a417a95b.json",
-					"name" : "exe_file",
+					"id" : "MyTreeExe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-MyTreeExe-Debug-5a3d14df8f31cf555b3e.json",
+					"name" : "MyTreeExe",
 					"projectIndex" : 0
 				}
 			]

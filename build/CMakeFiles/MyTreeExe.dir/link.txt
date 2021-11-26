@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\MyTreeExe.dir/objects.a
+C:\PROGRA~1\CodeBlocks\MinGW\bin\ar.exe cr CMakeFiles\MyTreeExe.dir/objects.a @CMakeFiles\MyTreeExe.dir\objects1.rsp
+C:\PROGRA~1\CodeBlocks\MinGW\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\MyTreeExe.dir/objects.a -Wl,--no-whole-archive -o MyTreeExe.exe -Wl,--out-implib,libMyTreeExe.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\MyTreeExe.dir\linklibs.rsp

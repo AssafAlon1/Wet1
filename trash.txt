@@ -1,0 +1,490 @@
+//using generalAVL;
+
+// Driver Code
+
+
+// This code is contributed by
+// rathbhupendra
+    /*
+int ExamDetails::days_In_Month(const int month)
+{
+    return DEFAULTDAYS;
+}
+
+bool ExamDetails::operator<(const ExamDetails& exam_details) const
+{
+    if(this->Month < exam_details.Month)
+    {
+        return true;
+    }
+    if(this->Month == exam_details.Month)
+    {
+        return (this->Day < exam_details.Day);
+    }
+    return false;
+}
+
+ExamDetails& ExamDetails::operator=(const ExamDetails& exam_details)
+{
+    if(this == &exam_details)
+    {
+        return *this;
+    }
+    this->Day = exam_details.Day;
+    this->Month = exam_details.Month;
+    this->exam_Length = exam_details.exam_Length;
+    this->zoom_Link = exam_details.zoom_Link;
+    this->course_Number = exam_details.course_Number;
+    this->begin_Hour = exam_details.begin_Hour;
+    return *this;
+}
+
+int ExamDetails::days_Difference_Count(int left_month, int left_day, int right_month ,int right_day)
+{
+    int left_Days_Counter=left_day;
+    for (int i = 1; i < left_month; i++)
+    {
+        left_Days_Counter += days_In_Month(i);
+    }
+    int right_Days_Counter = right_day;
+    for (int i = 1; i < right_month; i++)
+    {
+        right_Days_Counter += days_In_Month(i);
+    }
+    return (left_Days_Counter - right_Days_Counter);
+}
+
+
+int ExamDetails::operator-(const ExamDetails& exam_details) const
+{
+    int right_month = exam_details.Month;
+    int left_month = this->Month;
+    int right_days = exam_details.Day;
+    int left_days = this->Day;
+    int distance = days_Difference_Count(left_month,left_days,right_month,right_days);
+    return distance;
+}
+
+void ExamDetails::setLink(std::string link)
+{
+    this->zoom_Link = link;
+}
+
+std::string ExamDetails::getLink() const
+{
+    return this->zoom_Link;
+}
+
+ExamDetails ExamDetails::makeMatamExam()
+{
+    ExamDetails exam(234124,7,28,13,3,"https://tinyurl.com/59hzps6m");
+    return exam;
+}
+int ExamDetails::change_Double_To_Time_Hours(double time)
+{
+    int timeTemp = (int)time;
+    return timeTemp;
+}
+
+std::string ExamDetails::change_Double_To_Time_Minutes(double time)
+{
+    time*=10;
+    if((int)time%10 == 5)
+    {
+        return "30";
+    }
+    return "00";
+}
+
+/*
+ExamDetails::ExamDetails(int course_Number, int Month, int Day, double begin_Hour, double exam_Length,std::string zoom_Link)
+{
+    /*if(course_Number<0)
+    {
+        throw InvalidArgsException();
+    }*/
+    /*
+    if( Month<=0 || Day <=0 || Month >=13 || Day > days_In_Month(Month))
+    {
+        throw InvalidDateException();
+    }
+    if(begin_Hour<0 || begin_Hour>=24 || exam_Length<=0)
+    {
+        throw InvalidTimeException();
+    }
+    this->course_Number = course_Number;
+    this->Month = Month;
+    this->Day = Day;
+    this->begin_Hour = begin_Hour;
+    this->exam_Length = exam_Length;
+    this->zoom_Link = zoom_Link;
+}
+std::ostream& operator<<(std::ostream& os, const ExamDetails& exam_Details)
+{
+    int temp_begin_Hours = ExamDetails::change_Double_To_Time_Hours(exam_Details.begin_Hour);
+    std::string temp_begin_Minutes = ExamDetails::change_Double_To_Time_Minutes(exam_Details.begin_Hour);
+    int temp_Exam_Hours = ExamDetails::change_Double_To_Time_Hours(exam_Details.exam_Length);
+    std::string temp_Exam_Minutes = ExamDetails::change_Double_To_Time_Minutes(exam_Details.exam_Length);
+    //~~~~~~~~~~~~~~~~~~~~~~~~~
+    os << "Course Number: " << exam_Details.course_Number << std::endl;
+    os << "Time: " << exam_Details.Day << "." << exam_Details.Month << " at ";
+    os << temp_begin_Hours << ":" << temp_begin_Minutes << std::endl; //
+    os << "Duration: " << temp_Exam_Hours << ":" << temp_Exam_Minutes << std::endl;
+    os << "Zoom Link: " << exam_Details.zoom_Link << std::endl;
+    return os;
+}
+
+/*int main()
+{
+    try
+    {
+        ExamDetails exam1 = ExamDetails::makeMatamExam();
+        ExamDetails exam2 {104032, 7, 11, 9.5, 3};
+        ExamDetails exam3 = exam1;
+        cout << "the difference between MATAM and infi 2m is " << (exam1-exam2) << " days";
+        cout << endl;
+        cout << endl;
+        ExamDetails& closest = (exam1 < exam2) ? exam1 : exam2;
+        cout << "your closest exam is:" << endl << closest << endl;
+    }
+    catch(const ExamDetails::InvalidArgsException& e)
+    {
+        
+    }
+    catch(const ExamDetails::InvalidDateException& e)
+    {
+
+    }
+    catch(const ExamDetails::InvalidTimeException& e)
+    {
+
+    }
+    catch(const ExamDetails::Exception& e)
+    {
+        
+    }
+}*/ 
+//};
+    /*
+template<class T>
+struct Node{
+    T val;
+    Node *next;
+};  
+
+
+template<class T>
+class SortedList{
+public:
+    class const_iterator{
+        friend class SortedList;
+    public:
+        Node<T>* iter;
+        ~const_iterator() = default;
+        const_iterator& operator++();
+        bool operator==(const const_iterator& iterator) const;
+        T& operator*() const;
+        const_iterator& operator=(const const_iterator& iterator);
+        const_iterator(const const_iterator& iterator);
+    private:
+        const_iterator() = default;
+    } ;
+	SortedList();
+    SortedList(const SortedList<T>& list);
+	~SortedList();
+    SortedList<T>& operator=(const SortedList<T>& sorted_List);
+    template<class S>
+    SortedList<T> apply(S function);
+    template<class S>
+    SortedList<T> filter(S perdict);
+    void insert(const T& val);
+    void remove(const_iterator& iterator);
+    int length() const;
+    const_iterator begin() ;
+    const_iterator end() ;
+    
+
+private:
+    int size;
+    Node<T>* head;
+    const_iterator Iterator;
+    //gets previous node, next node and value to insert and puts the value in a new node between teh 2 given nodes
+    static Node<T>* NodeInsert(Node<T>* prev, Node<T>* next,const T& val);
+    //gets starting node and copies all elmenets after the starter node
+    static Node<T>* ListCopy(Node<T>* toCopy);
+    //static int getListLength(Node list);
+    static void ListCopyAux(Node<T>* toCopy,Node<T>* newList);
+    //gets head of a list and deletes all data in list-head stays alive
+    static void list_Empty_List(Node<T>* head);
+};
+
+template<class T>
+void SortedList<T>::ListCopyAux(Node<T>* toCopy,Node<T>* newList)
+{
+    while(toCopy!=NULL)
+    {
+        Node<T>* newNode = new Node<T>;
+        newList->next = newNode;
+        newList=newList->next;
+        newList->val = toCopy->val;
+        toCopy=toCopy->next;
+    }
+    newList->next = NULL;
+}
+template<class T>
+Node<T>* SortedList<T>::ListCopy(Node<T>* toCopy)
+{
+    if(toCopy == NULL)
+    {
+        //throw exception empty list
+        return toCopy;
+    }
+    toCopy=toCopy->next;
+    Node<T>* newList = new Node<T>;
+    newList->val = toCopy->val;    
+    ListCopyAux(toCopy->next,newList);
+    //exception?
+    return newList;
+
+}
+template<class T>
+Node<T>* SortedList<T>::NodeInsert(Node<T>* prev, Node<T>* next,const T& val)
+{
+    Node<T>* newNode = new Node<T>;
+    if(!newNode)
+    {
+        //throw exception
+        return NULL;
+    }
+    if(prev==NULL)
+    {
+        newNode->next = next;
+        newNode->val = val;
+        return newNode;    
+    }
+    prev->next = newNode;
+    newNode->next = next;
+    newNode->val = val;
+    return newNode;
+}
+
+template<class T>
+void SortedList<T>::insert(const T& val)
+{
+    Node<T>* temp = this->head;
+    while(temp->next!=NULL)
+    {
+        if(temp->next->val < val)
+        {
+            temp=temp->next;
+            continue;
+        }
+        break;
+    }
+    if(!SortedList::NodeInsert(temp,temp->next,val))
+    {
+        //exception should be thrown regardless on failure
+        //so instead of calling exception here just remove the if and call function
+    }
+    this->size++;
+}
+template<class T>
+T& SortedList<T>::const_iterator::operator*() const
+{
+    return this->iter->val;
+}
+
+template<class T>
+typename SortedList<T>::const_iterator &SortedList<T>::const_iterator::operator++()
+{
+    
+    if(this->iter->next == NULL)
+    {
+        //throw std::out_of_range();
+    }
+    this->iter = this->iter->next;
+    return *this;
+}
+
+
+template<class T>
+typename SortedList<T>::const_iterator &SortedList<T>::const_iterator::operator=(const SortedList<T>::const_iterator& iterator)
+{
+    if(this == &iterator)
+    {
+        return *this;
+    }
+    //delete this->iter;
+    this->iter = iterator.iter;
+    return *this;
+}
+
+template<class T>
+bool SortedList<T>::const_iterator::operator==(const const_iterator& iterator) const
+{
+    return this->iter == iterator.iter;
+}
+
+template<class T>
+SortedList<T>::const_iterator::const_iterator(const SortedList<T>::const_iterator& iterator)
+{
+    if(iterator.iter==NULL)
+    {
+        //throw?
+    }
+    this->iter = iterator.iter;
+}
+template<class T>
+void SortedList<T>::list_Empty_List(Node<T>* head)
+{
+    Node<T>* ptr = head->next;
+    while (ptr)
+    {
+        Node<T>* nextNode = ptr->next;
+        delete ptr;
+        ptr = nextNode;
+    }
+    head->next = NULL;
+
+}
+template<class T>
+SortedList<T>::~SortedList()
+{
+    Node<T>* ptr = this->head;
+    SortedList::list_Empty_List(ptr);
+    delete this->head;
+}
+template<class T>
+SortedList<T>::SortedList()
+{
+    this->head = new Node<T>;
+    this->head->next = NULL;
+    this->size=0;
+    //validity check be4 another delete
+    this->Iterator.iter = head;
+}
+template<class T>
+SortedList<T>::SortedList(const SortedList<T>& list)
+{
+    this->head = new Node<T>;
+    this->size = list.size;
+    if(this->size !=0)
+    {
+        this->head->next = ListCopy(list.head);
+    }
+    else
+    {
+        this->head->next = NULL;
+    }
+    
+}
+template<class T>
+SortedList<T>& SortedList<T>::operator=(const SortedList<T>& sorted_List)
+{
+    if(this == &sorted_List)
+    {
+        return *this;
+    }
+    
+    SortedList::list_Empty_List(this->head);
+    this->size = sorted_List.size;
+    if(this->size != 0)
+    {
+        this->head->next = ListCopy(sorted_List.head);
+    }
+    else{
+        this->head->next = NULL;
+    }
+    
+    return *this;
+}
+template<class T>
+void SortedList<T>::remove(const_iterator& iterator)
+{
+    Node<T>* current_List_ptr = this->head->next;
+    if(iterator.iter == NULL)
+    {
+        //throw exception
+        return;
+    }
+    if(!current_List_ptr->next)
+    {
+        //exception empty list
+        return;
+    }
+    if(current_List_ptr == iterator.iter)
+    {
+        this->head->next = this->head->next->next;
+        delete current_List_ptr;
+    }
+    else{
+    Node<T>* prev_node_ptr = NULL;
+    while(current_List_ptr!=NULL && iterator.iter!=current_List_ptr)
+    {
+        prev_node_ptr = current_List_ptr;
+        current_List_ptr= current_List_ptr->next;
+    }
+    if(current_List_ptr == NULL)
+    {
+        //exception? no iterator in list
+        return;
+    }
+    prev_node_ptr->next = current_List_ptr->next;
+    delete current_List_ptr;
+    iterator.iter = prev_node_ptr;
+    }
+    this->size--;
+}
+template<class T>
+int SortedList<T>::length() const
+{
+    return this->size;
+}
+template<class T>
+typename SortedList<T>::const_iterator SortedList<T>::begin() 
+{
+    const_iterator newIterator = const_iterator();
+    newIterator.iter = this->head->next;
+    return newIterator;
+}
+template<class T>
+typename SortedList<T>::const_iterator SortedList<T>::end()
+{
+    const_iterator newIterator = const_iterator();
+    newIterator.iter = NULL;
+    return newIterator;
+}
+
+template<class T> template<class S>
+SortedList<T> SortedList<T>::apply(S function)
+{
+    
+    SortedList<T> new_List = SortedList<T>(*this);
+    new_List.list_Empty_List(new_List.head);
+    new_List.size=0;
+    Node<T>* ptr = this->head;
+    T new_Val;
+    while(ptr->next!=NULL)
+    {
+        new_Val = (T)(function(ptr->next->val));
+        new_List.insert(new_Val);
+        ptr=ptr->next;
+    }
+    return new_List;
+}
+template<class T> template<class S>
+SortedList<T> SortedList<T>::filter(S predict) {
+
+    SortedList<T> new_List = SortedList<T>();
+    Node<T>* ptr = head;
+    while(ptr->next){
+        if(predict(ptr->next->val)){
+            new_List.insert(ptr->next->val);
+        }
+        ptr = ptr-> next;
+    }
+    return new_List;
+}
+}
+*/
+

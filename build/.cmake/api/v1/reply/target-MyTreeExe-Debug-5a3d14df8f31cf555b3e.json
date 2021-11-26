@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "exe_file.exe"
+			"path" : "MyTreeExe.exe"
 		},
 		{
-			"path" : "exe_file.pdb"
+			"path" : "MyTreeExe.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -59,7 +59,7 @@
 			]
 		}
 	],
-	"id" : "exe_file::@6890427a1f51a3e7e1df",
+	"id" : "MyTreeExe::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -79,8 +79,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "exe_file",
-	"nameOnDisk" : "exe_file.exe",
+	"name" : "MyTreeExe",
+	"nameOnDisk" : "MyTreeExe.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -101,7 +101,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "main.cpp",
+			"path" : "MyTree.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

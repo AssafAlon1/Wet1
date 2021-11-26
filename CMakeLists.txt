@@ -4,10 +4,10 @@ cmake_minimum_required(VERSION 3.0.0)
 set(CMAKE_CXX_STANDARD 11)
 
 # Set <PROJNAME> to be your project name. We set CXX (C++) here as the target language.
-project(HW2 VERSION 0.1.0 LANGUAGES CXX)
+project(<PROJNAME> VERSION 0.1.0 LANGUAGES CXX)
 
 # If you want to see "under the hood" of CMake, uncomment this:
-set(CMAKE_VERBOSE_MAKEFILE ON)
+# set(CMAKE_VERBOSE_MAKEFILE ON)
 
 # Define variables containing compiler flags for gcc
 set(MTM_FLAGS_DEBUG "-std=c++11 --pedantic-errors -Wall -Werror")
@@ -18,6 +18,6 @@ set(CMAKE_CPP_FLAGS ${MTM_FLAGS_DEBUG})
 
 
 # Add the names of your source files here
-set(CPP_FILES main.cpp)
+set(CPP_FILES MyTree.cpp)
 
-add_executable(exe_file ${CPP_FILES})
+add_executable(MyTreeExe ${CPP_FILES})

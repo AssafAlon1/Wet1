@@ -2,6 +2,30 @@
 	"entries" : 
 	[
 		{
+			"name" : "<PROJNAME>_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Code/DS/Wet1/build"
+		},
+		{
+			"name" : "<PROJNAME>_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Code/DS/Wet1"
+		},
+		{
 			"name" : "CMAKE_ADDR2LINE",
 			"properties" : 
 			[
@@ -747,7 +771,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "HW2"
+			"value" : "<PROJNAME>"
 		},
 		{
 			"name" : "CMAKE_PROJECT_VERSION",

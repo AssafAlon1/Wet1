@@ -31,9 +31,6 @@ default_target: all
 
 .SUFFIXES: .hpux_make_needs_suffix_list
 
-# Produce verbose output by default.
-VERBOSE = 1
-
 # Command-line flag to silence nested $(MAKE).
 $(VERBOSE)MAKESILENT = -s
 
@@ -67,16 +64,6 @@ CMAKE_BINARY_DIR = C:\Code\DS\Wet1\build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	"C:\Program Files\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -86,6 +73,16 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	"C:\Program Files\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -119,41 +116,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named exe_file
+# Target rules for targets named MyTreeExe
 
 # Build rule for target.
-exe_file: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 exe_file
-.PHONY : exe_file
+MyTreeExe: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 MyTreeExe
+.PHONY : MyTreeExe
 
 # fast build rule for target.
-exe_file/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_file.dir\build.make CMakeFiles/exe_file.dir/build
-.PHONY : exe_file/fast
+MyTreeExe/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyTreeExe.dir\build.make CMakeFiles/MyTreeExe.dir/build
+.PHONY : MyTreeExe/fast
 
-main.obj: main.cpp.obj
-.PHONY : main.obj
+MyTree.obj: MyTree.cpp.obj
+.PHONY : MyTree.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_file.dir\build.make CMakeFiles/exe_file.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+MyTree.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyTreeExe.dir\build.make CMakeFiles/MyTreeExe.dir/MyTree.cpp.obj
+.PHONY : MyTree.cpp.obj
 
-main.i: main.cpp.i
-.PHONY : main.i
+MyTree.i: MyTree.cpp.i
+.PHONY : MyTree.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_file.dir\build.make CMakeFiles/exe_file.dir/main.cpp.i
-.PHONY : main.cpp.i
+MyTree.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyTreeExe.dir\build.make CMakeFiles/MyTreeExe.dir/MyTree.cpp.i
+.PHONY : MyTree.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+MyTree.s: MyTree.cpp.s
+.PHONY : MyTree.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_file.dir\build.make CMakeFiles/exe_file.dir/main.cpp.s
-.PHONY : main.cpp.s
+MyTree.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyTreeExe.dir\build.make CMakeFiles/MyTreeExe.dir/MyTree.cpp.s
+.PHONY : MyTree.cpp.s
 
 # Help Target
 help:
@@ -163,10 +160,10 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... exe_file
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... MyTreeExe
+	@echo ... MyTree.obj
+	@echo ... MyTree.i
+	@echo ... MyTree.s
 .PHONY : help
 
 
